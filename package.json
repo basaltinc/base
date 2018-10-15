@@ -24,6 +24,7 @@
     "commitizen": "^3.0.2",
     "cz-lerna-changelog": "^2.0.0",
     "lerna": "^3.4.3",
+    "lerna-semantic-release": "^9.1.0",
     "semantic-release": "^15.9.17"
   },
   "config": {
