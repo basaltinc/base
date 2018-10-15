@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '8'
+
+script:
+  - yarn
+  - yarn test
+
+after_success: ./scripts/travis-after-success.sh
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+notifications:
+  email: false
+
+# deploy:
+#   provider: script
+#   skip_cleanup: true
+#   script: npx semantic-release

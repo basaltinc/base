@@ -1,0 +1,38 @@
+{
+  "name": "@basalt/base",
+  "version": "0.0.0",
+  "description": "Basalt's base",
+  "scripts": {
+    "cz": "git-cz",
+    "lint": "eslint .",
+    "lint:fix": "yarn test --fix",
+    "prerelease": "lerna-semantic-release pre",
+    "release": "lerna-semantic-release perform",
+    "postrelease": "lerna-semantic-release post",
+    "test": "yarn lint"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@semantic-release/commit-analyzer": "^6.0.1",
+    "@semantic-release/git": "^7.0.4",
+    "@semantic-release/npm": "^5.0.4",
+    "@semantic-release/release-notes-generator": "^7.0.2",
+    "commitizen": "^3.0.2",
+    "cz-lerna-changelog": "^2.0.0",
+    "lerna": "^3.4.3",
+    "semantic-release": "^15.9.17"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-lerna-changelog"
+    }
+  },
+  "repository": "git@github.com:basaltinc/base.git",
+  "author": "Evan Lovely <evanlovely@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
