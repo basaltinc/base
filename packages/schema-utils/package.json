@@ -1,0 +1,15 @@
+{
+  "name": "@basalt/base-schema-utils",
+  "version": "0.0.0",
+  "description": "Utilities for working with JSON Schemas",
+  "main": "src/schema-utils.js",
+  "scripts": {},
+  "dependencies": {
+    "ajv": "^6.5.4"
+  },
+  "author": "Basalt (https://basalt.io/)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
