@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@basalt": [
+        "./*/src"
+      ]
+    },
+    "target": "es2015",
+    "module": "es2015",
+    "declaration": true,
+    "sourceMap": true,
+    "strict": false,
+    "composite": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
+  }
+}
