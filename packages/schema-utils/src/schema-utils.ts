@@ -10,6 +10,7 @@ interface InterfaceSchema {
   $schema: string;
   type: 'object';
   properties: object;
+  [k: string]: any;
 }
 
 /**
