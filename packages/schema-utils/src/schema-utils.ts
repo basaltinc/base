@@ -8,8 +8,7 @@ const ajvDefaults = new Ajv({
 
 interface InterfaceSchema {
   $schema: string;
-  type: 'object';
-  properties: object;
+  type: string;
   [k: string]: any;
 }
 
