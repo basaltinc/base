@@ -10,7 +10,7 @@ script:
   - yarn
   - yarn test
 
-after_success: ./scripts/travis-after-success.sh
+# after_success: ./scripts/travis-after-success.sh
 
 cache:
   yarn: true
