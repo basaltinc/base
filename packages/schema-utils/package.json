@@ -1,6 +1,6 @@
 {
   "name": "@basalt/base-schema-utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utilities for working with JSON Schemas",
   "module": "dist/schema-utils.js",
   "typings": "dist/schema-utils.d.ts",
