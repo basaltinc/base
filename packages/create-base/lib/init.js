@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const del = require('del');
+// const del = require('del');
 const { join } = require('path');
 const memFs = require('mem-fs');
 const editor = require('mem-fs-editor');
