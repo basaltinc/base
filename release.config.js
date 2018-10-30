@@ -1,3 +1,4 @@
+// https://semantic-release.gitbook.io/semantic-release/
 module.exports = {
   branch: 'feature/semantic-releases',
   preset: 'angular',
