@@ -1,5 +1,5 @@
 module.exports = {
-  // branch: 'master',
+  branch: 'feature/semantic-releases',
   preset: 'angular',
   plugins: [
     [
