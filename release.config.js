@@ -1,5 +1,5 @@
 module.exports = {
-  branch: 'master',
+  // branch: 'master',
   preset: 'angular',
   plugins: [
     [
