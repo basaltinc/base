@@ -10,8 +10,6 @@ script:
   - yarn
   - yarn test
 
-# after_success: ./scripts/travis-after-success.sh
-
 cache:
   yarn: true
   directories:
@@ -19,8 +17,3 @@ cache:
 
 notifications:
   email: false
-
-# deploy:
-#   provider: script
-#   skip_cleanup: true
-#   script: npx semantic-release

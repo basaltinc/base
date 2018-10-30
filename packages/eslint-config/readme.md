@@ -1,5 +1,7 @@
 # Basalt Eslint Config Base
 
+## Setup
+
 ```bash
 npm install --save-dev @basalt/eslint-config-base
 ```
