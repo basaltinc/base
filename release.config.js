@@ -1,9 +1,46 @@
 module.exports = {
   branch: 'master',
+  preset: 'angular',
   plugins: [
-    '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
-    // '@semantic-release/npm',
-    // '@semantic-release/git',
+    [
+      // https://github.com/semantic-release/commit-analyzer
+      '@semantic-release/commit-analyzer',
+      {},
+    ],
+    [
+      // https://github.com/semantic-release/release-notes-generator
+      '@semantic-release/release-notes-generator',
+      {},
+    ],
+    [
+      // https://github.com/semantic-release/changelog
+      '@semantic-release/changelog',
+      {
+        changelogFile: 'CHANGELOG.md',
+      },
+    ],
+    // [
+    //   // https://github.com/semantic-release/npm
+    //   // requires ENV vars: $NPM_TOKEN if npmPublish
+    //   '@semantic-release/npm',
+    //   {
+    //     npmPublish: false,
+    //   },
+    // ],
+    [
+      // https://github.com/semantic-release/git
+      '@semantic-release/git',
+      {
+        // message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}', // eslint-disable-line
+        message: 'chore(release): changelog update ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}', // eslint-disable-line
+        // assets: ['CHANGELOG.md', 'package.json'],
+      },
+    ],
+    // [
+    //   '@semantic-release/exec',
+    //   {
+    //     // publishCmd: './publish.sh ${nextRelease.version} ${options.branch} ${commits.length} ${Date.now()}', // eslint-disable-line
+    //   },
+    // ],
   ],
 };
