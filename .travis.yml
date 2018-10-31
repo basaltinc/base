@@ -18,7 +18,9 @@ jobs:
       script:
         - echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
         - cp scripts/.npmrc-ci ~/.npmrc
-        - git reset --hard HEAD && git checkout master && ./node_modules/.bin/lerna publish --conventional-commits --yes
+        - git reset --hard HEAD && git checkout master
+        # - ./node_modules/.bin/lerna publish --conventional-commits --yes
+        - npx semantic-release
 
 cache:
   yarn: true
