@@ -7,10 +7,16 @@ before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.10.1
   - export PATH="$HOME/.yarn/bin:$PATH"
 
-script:
-  - yarn install --pure-lockfile
-  - yarn test
-  - git reset --hard HEAD && git checkout master && ./node_modules/.bin/lerna version --conventional-commits --yes && ls && git log && git push
+install:
+  - yarn install
+  
+jobs:
+  include:
+    - stage: test
+      script: yarn test
+    - stage: release
+      if: branch = master
+      script: git reset --hard HEAD && git checkout master && ./node_modules/.bin/lerna publish --conventional-commits --yes
 
 cache:
   yarn: true
