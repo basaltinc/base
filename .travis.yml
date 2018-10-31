@@ -7,7 +7,7 @@ before_install:
   - export PATH="$HOME/.yarn/bin:$PATH"
 
 script:
-  - yarn install --no-lockfile
+  - yarn install --pure-lockfile
   - yarn test
   - git checkout master && ./node_modules/.bin/lerna version --conventional-commits && ls && git log && git push
 
