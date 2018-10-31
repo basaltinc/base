@@ -9,7 +9,7 @@ before_install:
 script:
   - yarn install --pure-lockfile
   - yarn test
-  - git checkout master && ./node_modules/.bin/lerna version --conventional-commits && ls && git log && git push
+  - git reset --hard HEAD && git checkout master && ./node_modules/.bin/lerna version --conventional-commits && ls && git log && git push
 
 cache:
   yarn: true
