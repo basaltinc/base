@@ -2,8 +2,13 @@ const prettierConfig = require('./prettierrc');
 
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
-  plugins: ['prettier', 'jest', 'jsdoc'],
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:promise/recommended',
+  ],
+  plugins: ['prettier', 'jest', 'jsdoc', 'promise'],
   env: {
     'jest/globals': true,
   },
@@ -31,6 +36,12 @@ module.exports = {
     'react/no-danger': [0],
     'react/require-extension': [0],
     strict: [0],
-    'valid-jsdoc': 'error',
+    'valid-jsdoc': [
+      'error',
+      {
+        requireParamDescription: false,
+        requireReturnDescription: false,
+      },
+    ],
   },
 };
