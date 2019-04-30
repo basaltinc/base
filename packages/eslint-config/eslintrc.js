@@ -27,6 +27,7 @@ module.exports = {
     'no-param-reassign': [1, { props: false }],
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-useless-constructor': 'off',
+    'operator-assignment': [0],
     'prettier/prettier': ['error', prettierConfig],
     'react/boolean-prop-naming': [2],
     'react/destructuring-assignment': [0],
