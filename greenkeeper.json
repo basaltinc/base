@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/create-base/package.json",
+        "packages/eslint-config/package.json",
+        "packages/schema-utils/package.json"
+      ]
+    }
+  }
+}
