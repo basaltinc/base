@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      NPM_TOKEN: ${{secrets.npm_token}}
       GITHUB_EMAIL: ${{secrets.GITHUB_EMAIL}}
     steps:
       - uses: actions/checkout@v2
@@ -34,11 +35,7 @@ jobs:
       - run: yarn
       - name: Setup NPM & GitHub auth
         run: |
-          ls -lah
-          pwd
-          ls -lah ..
-          cat ../.npmrc || true
-          cp ./scripts/.npmrc-ci .npmrc
+          cp ./scripts/.npmrc-ci ../.npmrc
           npm whoami
           npm whoami --registry https://npm.pkg.github.com
           git config --global user.name "BasaltBot"
