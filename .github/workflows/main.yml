@@ -35,7 +35,7 @@ jobs:
       - run: yarn
       - name: Setup NPM & GitHub auth
         run: |
-          cp ./scripts/.npmrc-ci ../.npmrc
+          cp ./scripts/.npmrc-ci .npmrc
           npm whoami
           npm whoami --registry https://npm.pkg.github.com
           git config --global user.name "BasaltBot"
