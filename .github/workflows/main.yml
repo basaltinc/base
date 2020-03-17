@@ -34,8 +34,12 @@ jobs:
       - run: yarn
       - name: Setup NPM & GitHub auth
         run: |
-          cp ./scripts/.npmrc-ci ~/.npmrc
+          ls -lah
+          cat .npmrc
+          cat .yarnrc
+          cp ./scripts/.npmrc-ci .npmrc
           npm whoami
+          npm whoami --registry https://npm.pkg.github.com
           git config --global user.name "BasaltBot"
           git config --global user.email "$GITHUB_EMAIL"
       - name: Bump versions w Lerna; commit & push git changes
