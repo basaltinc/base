@@ -40,6 +40,8 @@ jobs:
           npm whoami --registry https://npm.pkg.github.com
           git config --global user.name "BasaltBot"
           git config --global user.email "$GITHUB_EMAIL"
+        env:
+          NPM_TOKEN: ${{secrets.npm_token}}
       - name: Bump versions w Lerna; commit & push git changes
         run: ./node_modules/.bin/lerna version --conventional-commits --yes
       - name: GitHub Packages Publish
