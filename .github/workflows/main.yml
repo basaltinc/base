@@ -18,10 +18,13 @@ jobs:
       - run: yarn
       - run: yarn test
 
-  publish-npm:
+  publish:
     needs: build
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      GITHUB_EMAIL: ${{secrets.GITHUB_EMAIL}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -29,24 +32,15 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
-      - run: ./node_modules/.bin/lerna publish --conventional-commits --yes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-  publish-gpr:
-    needs: build
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          registry-url: https://npm.pkg.github.com/
-          scope: '@basaltinc'
-      - run: ls
-      - run: yarn
-      - run: ./node_modules/.bin/lerna publish --conventional-commits --yes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
+      - name: Setup NPM & GitHub auth
+        run: |
+          cp ./scripts/.npmrc-ci ~/.npmrc
+          npm whoami
+          git config --global user.name "BasaltBot"
+          git config --global user.email "$GITHUB_EMAIL"
+      - name: Bump versions w Lerna; commit & push git changes
+        run: ./node_modules/.bin/lerna version --conventional-commits --yes
+      - name: GitHub Packages Publish
+        run: ./node_modules/.bin/lerna publish from-git --registry https://npm.pkg.github.com --yes
+      - name: NPM Publish
+        run: ./node_modules/.bin/lerna publish from-git --yes
