@@ -22,10 +22,6 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      NPM_TOKEN: ${{secrets.npm_token}}
-      GITHUB_EMAIL: ${{secrets.GITHUB_EMAIL}}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -42,9 +38,16 @@ jobs:
           git config --global user.email "$GITHUB_EMAIL"
         env:
           NPM_TOKEN: ${{secrets.npm_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Bump versions w Lerna; commit & push git changes
         run: ./node_modules/.bin/lerna version --conventional-commits --yes
       - name: GitHub Packages Publish
         run: ./node_modules/.bin/lerna publish from-git --registry https://npm.pkg.github.com --yes
+        env:
+          NPM_TOKEN: ${{secrets.npm_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: NPM Publish
         run: ./node_modules/.bin/lerna publish from-git --yes
+        env:
+          NPM_TOKEN: ${{secrets.npm_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
