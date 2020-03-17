@@ -29,9 +29,13 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
+      - run: |
+          git config --global user.name "BasaltBot"
+          git config --global user.email "$GITHUB_EMAIL"
       - run: ./node_modules/.bin/lerna publish --conventional-commits --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          GITHUB_EMAIL: ${{secrets.GITHUB_EMAIL}}
 
   publish-gpr:
     needs: build
@@ -46,7 +50,11 @@ jobs:
           scope: '@basaltinc'
       - run: ls
       - run: yarn
+      - run: |
+          git config --global user.name "BasaltBot"
+          git config --global user.email "$GITHUB_EMAIL"
       - run: ./node_modules/.bin/lerna publish --conventional-commits --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_EMAIL: ${{secrets.GITHUB_EMAIL}}
 
